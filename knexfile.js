@@ -5,7 +5,19 @@ const pgConnection = process.env.DATABASE_URL || {
   password: '0n0mat0p0eia'
 };
 module.exports = {
-
+  development: {
+    client: "sqlite3",
+    connection: {
+      filename: "./data/disciplines.db3",
+    },
+    useNullAsDefault: true,
+    migrations: {
+      directory: "./data/migrations",
+    },
+    seeds: {
+      directory: "./data/seeds",
+    },
+  },
   production: {
     client: 'pg',
     connection: pgConnection,
